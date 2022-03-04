@@ -6,6 +6,8 @@
  * dependencies: index.html;
  */
 
+/* OBSOLETE: Styling moved to mvp.css */
+
 * {
     margin: 0 0;
     padding: 0 0;
@@ -21,8 +23,8 @@ body {
 
 #ban-left {
     background: indianred;
-    opacity: 50%;
     border-radius: 15px;
+    border-style: double;
 }
 
 #ban-left h2 {
@@ -41,7 +43,7 @@ body {
 
 .ban {
     display: inline-block;
-    text-align: center;
+    align-self: center;
     font-size: 85%;
 }
 header {
