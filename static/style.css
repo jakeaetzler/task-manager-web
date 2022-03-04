@@ -1,0 +1,49 @@
+/*
+ * task-manager-web: style.css
+ *
+ * author: Jake Etzler
+ *
+ * dependencies: index.html;
+ */
+
+* {
+    margin: 0 0;
+    padding: 0 0;
+}
+
+body {
+    background: linear-gradient(to right, rgb(142, 158, 171), rgb(238, 242, 243));
+    text-align: center;
+    font-family: "Trebuchet MS", sans-serif;
+    width: 90%;
+    font-size: 24px;
+}
+
+#ban-left {
+    background: indianred;
+    opacity: 50%;
+    border-radius: 15px;
+}
+
+#ban-left h2 {
+    opacity: 100%;
+    color: black;
+}
+
+#ban-center {
+    margin: 0 100px;
+}
+
+#ban-center h2 {
+    padding-bottom: 10px;
+    font-weight: bolder;
+}
+
+.ban {
+    display: inline-block;
+    text-align: center;
+    font-size: 85%;
+}
+header {
+    background-color: lightblue;
+}
