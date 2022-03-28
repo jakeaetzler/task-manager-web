@@ -34,14 +34,20 @@
         <ul>
             <li><a href="{{ url_for('completed') }}">Completed</a></li>
             <li><a href="/">Home</a></li>
+            <li><a href="{{ url_for('due') }}">Due</a></li>
         </ul>
     </nav>
 
 
     <main>
-        {{ all_table }}
-        {{ due_table }}
-        {{ pri_table }}
+        <div class="main_div" id="calendar">
+            <h2><u>Calendar</u></h2>
+            {{ cal | safe }}
+        </div>
+        <div class="main_div" id="pri_tasks">
+            <h2><u>Priority Tasks</u></h2>
+            {{ pri_table }}
+        </div>
     </main>
 
 

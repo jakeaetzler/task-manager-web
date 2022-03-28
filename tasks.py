@@ -1,10 +1,14 @@
-from abc import ABC
-from audioop import reverse
+#
+# task-manager-web: tasks.py
+# Author: Jake Etzler
+# Wrapper file for all backend operations on tasks
+#
 
 import checkvist
 from flask_table import Table, Col
 import datetime
 import secret
+import calendar
 
 USER = secret.USER
 SECRET = secret.SECRET
@@ -15,15 +19,22 @@ SECRET = secret.SECRET
 #
 
 
+
 class TaskTable(Table):
     name = Col('Name')
     due = Col('Due')
+
+class PriTaskTable(Table):
+    name = Col('Name')
+    due = Col('Due')
+    time = Col('Time')
+
 
 
 class Task:
     def __init__(self, task):
         self.task = task
-        self.name = str(task['content'][3:]) + str(task['tags_as_text'])
+        self.name = str(task['content'][3:])
         self.due = str(task['due'])
         self.tdict = dict(name=self.name, due=self.due)
         self.status = str(task['status'])
@@ -103,7 +114,9 @@ class TasksModel:
         items = []
         for t in self.tasks:
             items.append(Task(t))
+        # Use lambda functions to sort by time in reverse order, then by date
         pri_items = sorted(sorted(items, key=lambda x: x.time, reverse=True), key=lambda x: x.duedate)
+
         pri_list = []
         for t in pri_items:
             pri_list.append(t.task)
@@ -114,9 +127,10 @@ class TasksModel:
         items = []
         for t in self.getPriTasks():
             temp = Task(t)
-            if temp.status == '0':
-                items.append(temp.tdict)
-        table = TaskTable(items)
+            if temp.status == '0' and temp.duedate <= (datetime.date.today() + datetime.timedelta(days=5)):
+                pdict = dict(name=temp.name, due=temp.due, time=str(temp.time))
+                items.append(pdict)
+        table = PriTaskTable(items)
         return table
 
 
@@ -131,8 +145,15 @@ def getclient():
     print(user['username'])
     return cl
 
+def getcalendar():
+    cal = calendar.HTMLCalendar(firstweekday=0)
+    month, yr = 3, 2022
+    return cal.formatmonth(yr, month)
 
 
+#
+# --Main for testing--
+#
 
 if __name__ == '__main__':
     tm = TasksModel()
@@ -142,6 +163,7 @@ if __name__ == '__main__':
         print(t['due'])
         print(t['tags_as_text'])
 
+    print(tm.getPriTable())
 
 
 
