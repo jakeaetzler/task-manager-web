@@ -118,13 +118,14 @@ main header {
 
 header {
     text-align: var(--justify-important);
-    background-color: wheat;
+    background-color: peachpuff;
     border-style: solid;
     border-radius: 5px;
     border-color: darksalmon;
     margin-top: 1%;
     margin-bottom: 1%;
     color: lightcyan;
+    opacity: 80%;
 }
 
 /* --End edit-- */
@@ -519,7 +520,9 @@ nav {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 0;
 }
+
 
 
 #ban-left {
@@ -533,3 +536,20 @@ main {
 table {
     margin: 1% 1%;
 }
+
+.main_div {
+    padding: 0 2%;
+    width: fit-content;
+    display: inline-block;
+}
+
+.main_div h2 {
+    margin-bottom: 1%;
+    float: top;
+}
+
+.main_div table{
+    vertical-align: top;
+}
+
+
