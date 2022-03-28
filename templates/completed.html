@@ -1,22 +1,16 @@
 <!DOCTYPE html>
-
-<!--
->task-manager-web: index.html
->
->author: Jake Etzler
->
->requirements: mvp.css
---->
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Task Manager</title>
+    <title>Completed</title>
     <link href="../static/mvp.css" rel="stylesheet">
 </head>
 <body>
 
+
+
     <header>
+
         <div class="ban" id="ban-left">
             <!-- TODO: Make mobile compatible --->
             <img src="../static/jae-logo.PNG" alt="JAE Web Design" height=110px width=125px />
@@ -38,16 +32,9 @@
     </nav>
 
 
-    <main>
-        {{ all_table }}
-        {{ all_table }}
-        {{ due_table }}
-    </main>
-
+<main>
+    {{ comp_table }}
+</main>
 
 </body>
-
-<footer>
-    <a href="https://github.com/jakeaetzler/task-manager-web" target="_blank"><u>Git</u></a>
-</footer>
 </html>

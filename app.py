@@ -1,12 +1,21 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
+
+import tasks
+from tasks import *
 
 app = Flask(__name__)
 
+tm = tasks.TasksModel()
 
 @app.route('/')
 def hello_world():
-    return render_template('index.html', name=None)
+    return render_template('index.html', all_table=tm.getAllTable(), due_table=tm.getDueTable())
 
 
-if __name__ == '__main__':
-    app.run()
+@app.route('/completed', methods=['GET', 'POST'])
+def completed():
+    return render_template('completed.html', comp_table=tm.getCompTable())
+
+
+
+
