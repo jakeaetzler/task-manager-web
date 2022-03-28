@@ -4,9 +4,10 @@ from audioop import reverse
 import checkvist
 from flask_table import Table, Col
 import datetime
+import secret
 
-USER = 'jboss224@gmail.com'
-SECRET = 'UV9ipJFULQQa6v'
+USER = secret.USER
+SECRET = secret.SECRET
 
 
 #
