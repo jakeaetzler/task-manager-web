@@ -10,6 +10,7 @@ import datetime
 import secret
 import calendar
 
+# Must put your own information in these fields if you want to run it yourself
 USER = secret.USER
 SECRET = secret.SECRET
 
@@ -18,19 +19,26 @@ SECRET = secret.SECRET
 # --Section for file classes--
 #
 
-
-
+#
+# TaskTable: Class for generating flask-table of tasks
+#
 class TaskTable(Table):
     name = Col('Name')
     due = Col('Due')
 
+
+#
+# PriTaskTable: Class for generating flask-table of tasks ordered by priority with time column
+#
 class PriTaskTable(Table):
     name = Col('Name')
     due = Col('Due')
     time = Col('Time')
 
 
-
+#
+# Task: Object for parsing out information from task dictionary
+#
 class Task:
     def __init__(self, task):
         self.task = task
@@ -41,7 +49,6 @@ class Task:
         self.tags = task['tags_as_text']
         self.duedate = self.getDueDate()
         self.time = self.getTime()
-
 
     # Get date from tags
     def getDueDate(self):
@@ -56,8 +63,9 @@ class Task:
         return 0
 
 
-
-
+#
+# TasksModel: Wrapper class for producing usable objects from API returned objects
+#
 class TasksModel:
     # Initialize the model
     def __init__(self):
@@ -138,6 +146,7 @@ class TasksModel:
 # --Section for file functions--
 #
 
+# Retrieve API client
 def getclient():
     cl = checkvist.user_account(USER, SECRET)
     cl.send_auth()
@@ -145,9 +154,11 @@ def getclient():
     print(user['username'])
     return cl
 
+# Generate HTML calendar for specified month
+# TODO: Make automatically get days with due tasks
 def getcalendar():
     cal = calendar.HTMLCalendar(firstweekday=0)
-    month, yr = 3, 2022
+    month, yr = datetime.date.today().month.real, 2022
     return cal.formatmonth(yr, month)
 
 
@@ -164,6 +175,3 @@ if __name__ == '__main__':
         print(t['tags_as_text'])
 
     print(tm.getPriTable())
-
-
-

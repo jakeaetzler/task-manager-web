@@ -118,14 +118,28 @@ main header {
 
 header {
     text-align: var(--justify-important);
-    background-color: peachpuff;
+    /*background-color: #777475;*/
     border-style: solid;
     border-radius: 5px;
-    border-color: darksalmon;
+    border-color: lightblue;
     margin-top: 1%;
     margin-bottom: 1%;
-    color: lightcyan;
-    opacity: 80%;
+    color: #5c5660;
+
+    background: linear-gradient(-45deg, #6c8371, #fcedb4, #fed9aa, #ffcfb9);
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* --End edit-- */
@@ -500,12 +514,27 @@ blockquote footer {
     display: inline-block;
     padding: 0 100px;
     position: relative;
+    vertical-align: middle;
+    horiz-align: center;
 }
 
+#ban-center {
+    background: rgba(173, 216, 230, 0.2);
+    border-collapse: collapse;
+    border-radius: 25px;
+    outline-offset: -10px;
+    background-origin: padding-box;
+    background-repeat: no-repeat;
+    padding: 0 2%;
+    margin: 0 10%;
+}
+
+
 #header-title {
-    font-family: "Comic Sans MS", serif;
+    font-family: "Trebuchet MS", sans-serif;
     margin-bottom: 2px;
     font-size: 150%;
+    font-weight: 1500;
 }
 
 footer {
@@ -523,10 +552,33 @@ nav {
     margin-bottom: 0;
 }
 
+nav ul {
+    width: 100%;
+    text-align: center;
+    float: left;
+}
+
+nav li {
+    align-self: center;
+    width: 20%;
+    text-align: center !important;
+}
+
+
+
+#home-link {
+    text-align: center;
+}
 
 
 #ban-left {
     margin-left: -50px;
+}
+
+#ban-right {
+    text-align: center;
+    width: 5%;
+    vertical-align: center;
 }
 
 main {
@@ -551,5 +603,6 @@ table {
 .main_div table{
     vertical-align: top;
 }
+
 
 
