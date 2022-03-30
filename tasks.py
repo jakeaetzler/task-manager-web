@@ -141,6 +141,11 @@ class TasksModel:
         table = PriTaskTable(items)
         return table
 
+    # Refresh API to load list updates made in checkvist
+    def refresh(self):
+        self.cl = getclient()
+        self.tasks = self.getTasks()
+
 
 #
 # --Section for file functions--
