@@ -124,21 +124,22 @@ header {
     border-color: lightblue;
     margin-top: 1%;
     margin-bottom: 1%;
-    color: #5c5660;
+    color: #ffffff;
 
-    background: linear-gradient(-45deg, #6c8371, #fcedb4, #fed9aa, #ffcfb9);
-    animation: gradient 15s ease infinite;
+    background: linear-gradient(-45deg, rgba(36, 43, 224, 0.98), rgba(56, 10, 227, 0.73), #e51425, #ab7cce);
+    background-size: 400% 400%;
+    animation: gradient 60s ease infinite;
 }
 
 @keyframes gradient {
     0% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
     50% {
         background-position: 100% 50%;
     }
     100% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
 }
 
@@ -519,12 +520,11 @@ blockquote footer {
 }
 
 #ban-center {
-    background: rgba(173, 216, 230, 0.2);
-    border-collapse: collapse;
+/*    border-collapse: collapse;
     border-radius: 25px;
     outline-offset: -10px;
     background-origin: padding-box;
-    background-repeat: no-repeat;
+    background: rgba(173, 216, 230, 0.2) no-repeat;*/
     padding: 0 2%;
     margin: 0 10%;
 }
@@ -539,11 +539,12 @@ blockquote footer {
 
 footer {
     text-align: center;
+    vertical-align: bottom;
 }
 
 nav {
     position: absolute;
-    left: 0px;
+    left: 0;
     height: 40px;
     background-color: lightblue;
     width: 100%;
