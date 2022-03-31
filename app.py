@@ -1,7 +1,6 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 
 import tasks
-
 
 app = Flask(__name__)
 
@@ -10,7 +9,14 @@ tm = tasks.TasksModel()
 
 @app.route('/', methods=['GET', 'POST'])
 def hello_world():
-    return render_template('index.html', all_table=tm.getAllTable(), due_table=tm.getDueTable(),
+    form = request.form
+    if request.method == 'POST':
+        if form.get('refresh-api') == 'Refresh Tasks':
+            tm.refresh()
+    elif request.method == 'GET':
+        return render_template('index.html', form=form, all_table=tm.getAllTable(), due_table=tm.getDueTable(),
+                               pri_table=tm.getPriTable(), cal=tasks.getcalendar(), )
+    return render_template('index.html', form=form, all_table=tm.getAllTable(), due_table=tm.getDueTable(),
                            pri_table=tm.getPriTable(), cal=tasks.getcalendar())
 
 
@@ -22,6 +28,3 @@ def completed():
 @app.route('/due', methods=['GET', 'POST'])
 def due():
     return render_template('due.html', due_table=tm.getDueTable())
-
-
-
