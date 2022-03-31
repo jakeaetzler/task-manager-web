@@ -540,6 +540,37 @@ blockquote footer {
 footer {
     text-align: center;
     vertical-align: bottom;
+
+    width: 100%;
+
+}
+
+footer form {
+    display: inline-block;
+    box-shadow: 0 0;
+    width: 100%;
+    text-align: center;
+    border-width: 0;
+}
+
+footer a {
+    margin: 0 15%;
+}
+
+#refresh-btn {
+    display: inline-block;
+    margin: 0 15%;
+    float: right;
+    /*background: radial-gradient(#777777, #515151);*/
+    background: rgba(0, 0, 0, 0);
+    color: #0097fc;
+    text-decoration: underline;
+    font-weight: bolder;
+    border-width: 0;
+}
+
+#refresh-btn:hover {
+    background: #7777;
 }
 
 nav {
@@ -552,6 +583,7 @@ nav {
     justify-content: center;
     margin-bottom: 0;
 }
+
 
 nav ul {
     width: 100%;
