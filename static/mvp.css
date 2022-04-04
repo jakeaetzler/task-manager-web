@@ -571,7 +571,9 @@ footer a {
 
 #refresh-btn:hover {
     background: #7777;
+    cursor: pointer;
 }
+
 
 nav {
     position: absolute;
@@ -626,6 +628,7 @@ table {
     padding: 0 2%;
     width: fit-content;
     display: inline-block;
+    horiz-align: center;
 }
 
 .main_div h2 {
@@ -633,9 +636,17 @@ table {
     float: top;
 }
 
-.main_div table{
+.main_div table {
     vertical-align: top;
 }
 
+#overdue_table th{
+    background: red;
+}
+#overdue_table tr:nth-child(even) {background: #72713a}
+
+.main_home {
+    display: flex;
+}
 
 

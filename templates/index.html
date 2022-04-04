@@ -8,11 +8,14 @@
 >requirements: mvp.css
 --->
 
+<!-- TODO: Create a base template for better reuse --->
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Task Manager</title>
     <link href="../static/mvp.css" rel="stylesheet">
+    <link href="/static/jae-logo-2.png" rel="icon">
 </head>
 <body>
 
@@ -40,13 +43,19 @@
 
 
     <main>
-        <div class="main_div" id="calendar">
-            <h2><u>Calendar</u></h2>
-            {{ cal | safe }}
-        </div>
-        <div class="main_div" id="pri_tasks">
-            <h2><u>Priority Tasks</u></h2>
-            {{ pri_table }}
+        <div class="main_home">
+            <div class="main_div" id="calendar">
+                <h2><u>Calendar</u></h2>
+                {{ cal | safe }}
+            </div>
+            <div class="main_div" id="pri_tasks">
+                <h2><u>Priority Tasks</u></h2>
+                {{ pri_table }}
+            </div>
+            <div class="main_div" id="overdue_tasks">
+                <h2><u>Overdue Tasks</u></h2>
+                {{ overdue_table }}
+            </div>
         </div>
     </main>
 

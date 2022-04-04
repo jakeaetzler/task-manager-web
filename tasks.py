@@ -135,11 +135,36 @@ class TasksModel:
         items = []
         for t in self.getPriTasks():
             temp = Task(t)
-            if temp.status == '0' and temp.duedate <= (datetime.date.today() + datetime.timedelta(days=5)):
-                pdict = dict(name=temp.name, due=temp.due, time=str(temp.time))
+            if temp.status == '0' and (
+                    datetime.date.today() + datetime.timedelta(days=5)) >= temp.duedate >= datetime.date.today():
+                pdict = self.pri_dict(temp)
                 items.append(pdict)
         table = PriTaskTable(items)
         return table
+
+    def pri_dict(self, temp):
+        pdict = dict(name=temp.name, due=temp.due, time=str(temp.time))
+        return pdict
+
+    # Get overdue tasks in priority order
+    def getOverdueTasks(self):
+        items = []
+        for t in self.getPriTasks():
+            temp = Task(t)
+            if temp.status == '0' and temp.duedate < datetime.date.today():
+                items.append(t)
+        return items
+
+    # Get overdue task table
+    def getOverdueTable(self):
+        items = []
+        for t in self.getOverdueTasks():
+            temp = Task(t)
+            pdict = self.pri_dict(temp)
+            items.append(pdict)
+        table = PriTaskTable(items, table_id='overdue_table')
+        return table
+
 
     # Refresh API to load list updates made in checkvist
     def refresh(self):
@@ -174,9 +199,5 @@ def getcalendar():
 if __name__ == '__main__':
     tm = TasksModel()
     tasks = tm.getTasks()
-    for t in tm.getPriTasks():
-        print(t['content'])
-        print(t['due'])
-        print(t['tags_as_text'])
 
-    print(tm.getPriTable())
+    print(tm.getOverdueTasks())
